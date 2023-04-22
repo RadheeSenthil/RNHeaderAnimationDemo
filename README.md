@@ -13,3 +13,5 @@ Clone this repository, navigate to the directory and run one of the following np
 - npm run android
 - npm run ios
 - npm run web
+
+npx expo install expo-linear-gradient
