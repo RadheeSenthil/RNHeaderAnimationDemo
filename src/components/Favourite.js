@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     estTime: {
         fontWeight: 'bold',
         fontSize: 40,
-        color: "green",
+        color: "#09836a",
     },
     estTimeStatic: {
         fontSize: 12,

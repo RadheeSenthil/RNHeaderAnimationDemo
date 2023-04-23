@@ -5,7 +5,7 @@ const Greetings = () => {
     return (
         <View style={styles.container}>
 
-            <Text style={styles.title1}>Lookin' good, Sam!</Text>
+            <Text style={styles.title1}>Lookin' good, Radhika!</Text>
             <Text style={styles.title2}>Make every day</Text>
             <Text style={styles.title2}>a great hair day.</Text>
 

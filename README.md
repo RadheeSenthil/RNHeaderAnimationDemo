@@ -14,4 +14,10 @@ Clone this repository, navigate to the directory and run one of the following np
 - npm run ios
 - npm run web
 
+## Dependencies
+
 npx expo install expo-linear-gradient
+
+npm install @expo/vector-icons
+https://icons.expo.fyi/
+

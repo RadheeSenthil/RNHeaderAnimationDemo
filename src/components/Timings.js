@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     openCloseTitle: {
         fontWeight: 'bold',
         fontSize: 12,
-        color: "green"
+        color: "#09836a"
     },
     time: {
         fontSize: 12,

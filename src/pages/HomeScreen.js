@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, Animated } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, Animated, Easing } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
@@ -30,7 +30,72 @@ const HomeScreen = () => {
         extrapolate: 'clamp',
     });
 
-    
+    const greetingTransY = useRef(new Animated.Value(-400)).current;
+    const welcomeTransX = useRef(new Animated.Value(500)).current;
+    const favTransX = useRef(new Animated.Value(500)).current;
+    const otherTitleTransX = useRef(new Animated.Value(500)).current;
+    const nearbyTransX = useRef(new Animated.Value(500)).current;
+
+
+
+    useEffect(() => {
+        
+        const animGreeting = Animated.timing(greetingTransY, {
+            toValue: 0,
+            duration: 1000,
+            delay: 2000,
+            easing: Easing.ease,
+            useNativeDriver: true
+        }
+        );
+
+        const animWelcome = Animated.timing(welcomeTransX, {
+            toValue: 0,
+            duration: 500,
+            // delay: 2000,
+            easing: Easing.ease,
+            useNativeDriver: true
+        }
+        );
+
+        const animFav = Animated.timing(favTransX, {
+            toValue: 0,
+            duration: 500,
+            // delay: 2000,
+            easing: Easing.ease,
+            useNativeDriver: true
+        }
+        );
+
+        const animOtherTitle = Animated.timing(otherTitleTransX, {
+            toValue: 0,
+            duration: 400,
+            // delay: 2000,
+            easing: Easing.ease,
+            useNativeDriver: true
+        }
+        );
+
+        const animNearby = Animated.timing(nearbyTransX, {
+            toValue: 0,
+            duration: 500,
+            // delay: 2000,
+            easing: Easing.ease,
+            useNativeDriver: true
+        }
+        );
+
+        Animated.sequence(
+            [
+                animGreeting, 
+                animWelcome,
+                animFav,
+                animOtherTitle,
+                animNearby
+            ]).start();
+    }, []);
+
+
     return (
         <View style={styles.container}>
             <StatusBar style="light" />
@@ -44,39 +109,37 @@ const HomeScreen = () => {
                     <Animated.ScrollView
                         scrollEventThrottle={100}
                         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: false })}
-                        
                         contentContainerStyle={styles.contentContainer}
-                        >
-                        
+                    >
 
-                        <View style={styles.greetingsView}>
+                        <Animated.View style={[styles.greetingsView, { transform: [{ translateY: greetingTransY }] }]}>
                             <Greetings />
-                        </View>
-                        <View style={styles.welcomeBodyView}>
+                        </Animated.View>
+
+                        <Animated.View style={[styles.welcomeBodyView, { transform: [{ translateX: welcomeTransX }] }]}>
                             <Welcome />
-                        </View>
+                        </Animated.View>
 
-                        <View style={styles.primaryBodyView} >
+                        <Animated.View style={[styles.primaryBodyView, { transform: [{ translateX: favTransX }] }]} >
                             <Favourite item={favourite} />
-                        </View>
-                        <View style={styles.otherSalonsHeadingView} >
-                            <Text style={styles.otherSalonsHeadingText}>OTHER SALONS FOR YOU</Text>
-                        </View>
+                        </Animated.View>
 
-                        <View style={styles.otherSalonsListView} >
+                        <Animated.View style={[styles.otherSalonsHeadingView, { transform: [{ translateX: otherTitleTransX }] }]} >
+                            <Text style={styles.otherSalonsHeadingText}>OTHER SALONS FOR YOU</Text>
+                        </Animated.View>
+
+                        <Animated.View style={[styles.otherSalonsListView, { transform: [{ translateX: nearbyTransX }] }]} >
                             {nearby.map((item) => {
                                 return (
-                                    <>
-                                <RowComp item={item} isNearBy={true}/>
-                                <View style={styles.lineSeparator} />
-                                </>
+                                    <View key={item.id}>
+                                        <RowComp item={item} isNearBy={true} />
+                                        <View style={styles.lineSeparator} />
+                                    </View>
 
                                 )
                             })
                             }
-                        </View>
-
-
+                        </Animated.View>
                     </Animated.ScrollView>
                 </View>
 
@@ -148,7 +211,7 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         paddingVertical: 40,
-      }
+    }
 });
 
 export default HomeScreen;
