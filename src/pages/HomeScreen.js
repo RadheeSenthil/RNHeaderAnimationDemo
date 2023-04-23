@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, Animated, Easing } from 'react-native';
+import { View, Text, StyleSheet, Animated, Easing } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
@@ -36,14 +36,12 @@ const HomeScreen = () => {
     const otherTitleTransX = useRef(new Animated.Value(500)).current;
     const nearbyTransX = useRef(new Animated.Value(500)).current;
 
-
-
     useEffect(() => {
         
         const animGreeting = Animated.timing(greetingTransY, {
             toValue: 0,
             duration: 1000,
-            delay: 2000,
+            //delay: 2000,
             easing: Easing.ease,
             useNativeDriver: true
         }
@@ -156,8 +154,6 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     headerContainer: {
-        // flex: 1,
-        // position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
@@ -165,7 +161,6 @@ const styles = StyleSheet.create({
     },
     bodyContainer: {
         flex: 1,
-        //paddingTop: 10,
     },
     greetingsView: {
         flex: 0.2,

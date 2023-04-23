@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const Greetings = () => {
     return (
@@ -16,7 +16,6 @@ const Greetings = () => {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        // margin: 10,
     },
     title1: {
         flex: 1,

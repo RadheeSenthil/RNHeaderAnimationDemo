@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-
 const Welcome = () => {
     return (
         <View style={styles.container}>
@@ -22,7 +21,6 @@ const Welcome = () => {
         </View>
     );
 };
-
 
 const styles = StyleSheet.create({
     container: {
@@ -50,8 +48,6 @@ const styles = StyleSheet.create({
     linkView: {
         flex:1,
         flexDirection: "row",
-        //alignItems: 'center',
-        //justifyContent: 'center',
     },
     linkText: {
         fontWeight: 'bold',
